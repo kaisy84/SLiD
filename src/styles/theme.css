@@ -1,0 +1,86 @@
+:root {
+  /* Brand palette — calm diagnostic software */
+  --slid-forest: #1f4d3a;
+  --slid-forest-deep: #16382a;
+  --slid-forest-mid: #2a5f48;
+  --slid-sage: #8faf96;
+  --slid-sage-soft: #c5d6c8;
+  --slid-sage-muted: #dce8de;
+  --slid-offwhite: #f4f6f2;
+  --slid-surface: #ffffff;
+  --slid-anthracite: #2c3230;
+  --slid-text-secondary: #5c6661;
+  --slid-text-muted: #7a857e;
+  --slid-border: #d5ddd6;
+  --slid-border-soft: #e6ebe6;
+  --slid-status-laufend: #3d7a5a;
+  --slid-status-laufend-bg: #e8f2ec;
+  --slid-status-abgeschlossen: #6b736e;
+  --slid-status-abgeschlossen-bg: #eceeed;
+  --slid-status-geplant: #9a7b4f;
+  --slid-status-geplant-bg: #f3ede4;
+
+  --slid-sidebar-width: 248px;
+  --slid-radius: 10px;
+  --slid-radius-sm: 6px;
+  --slid-shadow: 0 1px 2px rgba(28, 45, 36, 0.04), 0 4px 14px rgba(28, 45, 36, 0.05);
+
+  /* Offline-only system stacks — no remote font loading */
+  --font-sans: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", Times, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--slid-anthracite);
+  background: var(--slid-offwhite);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--slid-anthracite);
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

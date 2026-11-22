@@ -1,0 +1,119 @@
+.diagnostics__intro {
+  margin-bottom: 1.75rem;
+  max-width: 46rem;
+  color: var(--slid-text-secondary);
+}
+
+.diagnostics__block + .diagnostics__block {
+  margin-top: 2rem;
+}
+
+.diagnostics__block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.95rem;
+}
+
+.diagnostics__block-head h2 {
+  font-size: 1.12rem;
+}
+
+.diagnostics__block-head p {
+  font-size: 0.85rem;
+  color: var(--slid-text-muted);
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.95rem;
+}
+
+.module-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 10.5rem;
+  padding: 1.15rem 1.2rem;
+  background: var(--slid-surface);
+  border: 1px solid var(--slid-border-soft);
+  border-radius: var(--slid-radius);
+  box-shadow: var(--slid-shadow);
+}
+
+.module-card__code {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.15rem 0.5rem;
+  margin-bottom: 0.7rem;
+  border-radius: 999px;
+  background: var(--slid-sage-muted);
+  color: var(--slid-forest);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.module-card__title {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.module-card__desc {
+  flex: 1;
+  font-size: 0.88rem;
+  color: var(--slid-text-secondary);
+}
+
+.module-card__subs {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.75rem;
+  background: #f7f9f6;
+  border-radius: var(--slid-radius-sm);
+}
+
+.module-card__subs li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.module-card__sub-code {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--slid-forest);
+}
+
+.module-card__sub-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.module-card__sub-desc {
+  font-size: 0.8rem;
+  color: var(--slid-text-secondary);
+}
+
+.module-card__state {
+  margin-top: 0.95rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--slid-text-muted);
+}
+
+@media (max-width: 1100px) {
+  .module-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+}

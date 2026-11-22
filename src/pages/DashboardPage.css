@@ -1,0 +1,110 @@
+.dashboard__welcome {
+  padding: 1.15rem 1.3rem;
+  margin-bottom: 1.75rem;
+  background: linear-gradient(135deg, #eef2ee, #e5ece7);
+  border: 1px solid var(--slid-border-soft);
+  border-radius: var(--slid-radius);
+  color: var(--slid-text-secondary);
+  font-size: 0.98rem;
+}
+
+.dashboard__section + .dashboard__section {
+  margin-top: 1.85rem;
+}
+
+.section-title {
+  margin-bottom: 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quick-action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 5.5rem;
+  padding: 1.2rem 1.3rem;
+  background: var(--slid-surface);
+  border: 1px solid var(--slid-border-soft);
+  border-radius: var(--slid-radius);
+  box-shadow: var(--slid-shadow);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.quick-action:hover {
+  border-color: var(--slid-sage);
+  transform: translateY(-1px);
+}
+
+.quick-action__label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--slid-forest);
+}
+
+.quick-action__hint {
+  font-size: 0.88rem;
+  color: var(--slid-text-muted);
+}
+
+.child-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.table-panel {
+  overflow: hidden;
+  background: var(--slid-surface);
+  border: 1px solid var(--slid-border-soft);
+  border-radius: var(--slid-radius);
+  box-shadow: var(--slid-shadow);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--slid-border-soft);
+}
+
+.data-table th {
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--slid-text-muted);
+  background: #f7f9f6;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-link {
+  font-weight: 600;
+  color: var(--slid-forest);
+}
+
+.table-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 980px) {
+  .quick-actions,
+  .child-grid {
+    grid-template-columns: 1fr;
+  }
+}

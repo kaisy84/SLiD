@@ -1,0 +1,41 @@
+.placeholder__panel {
+  max-width: 40rem;
+  padding: 1.4rem 1.5rem;
+  background: var(--slid-surface);
+  border: 1px solid var(--slid-border-soft);
+  border-radius: var(--slid-radius);
+  box-shadow: var(--slid-shadow);
+}
+
+.placeholder__lead {
+  margin-bottom: 1.25rem;
+  color: var(--slid-text-secondary);
+}
+
+.placeholder__list {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1.2rem;
+}
+
+.placeholder__list li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--slid-anthracite);
+}
+
+.placeholder__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--slid-sage);
+}
+
+.placeholder__note {
+  font-size: 0.85rem;
+  color: var(--slid-text-muted);
+}
