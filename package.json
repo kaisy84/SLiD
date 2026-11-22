@@ -14,6 +14,7 @@
     "electron:build": "npm run build && npm run electron:compile",
     "electron:start": "npm run electron:build && electron .",
     "smoke:sqlcipher": "node scripts/smoke-sqlcipher.mjs",
+    "smoke:navigation": "node scripts/smoke-navigation.mjs",
     "postinstall": "electron-rebuild -f -w better-sqlite3-multiple-ciphers || true"
   },
   "dependencies": {

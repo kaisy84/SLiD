@@ -15,7 +15,15 @@ export type ShellInfo = {
   /** Electron `process.platform`, or `"web"` in the browser. */
   platform: string;
   appVersion: string;
-  /** userData directory when running under Electron; null in browser. */
+  /**
+   * True only when main was started with SLID_DIAGNOSTIC=1|true|yes.
+   * Without this, local filesystem paths are not exposed to the renderer.
+   */
+  diagnosticMode: boolean;
+  /**
+   * Absolute userData directory — only when diagnosticMode is true.
+   * Otherwise null (including normal Electron mode and browser).
+   */
   userDataPath: string | null;
 };
 
@@ -36,8 +44,11 @@ export type DbStatus =
     }
   | {
       state: "lab_probe_open";
-      /** Lab-only encrypted file; never the production store. */
-      path: string;
+      /**
+       * Absolute lab DB path — only included when SLID_DIAGNOSTIC is enabled.
+       * Lab-only encrypted file; never the production store.
+       */
+      path?: string;
       cipher: "sqlcipher";
       library: "better-sqlite3-multiple-ciphers";
       schemaVersion: number;

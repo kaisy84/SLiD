@@ -17,3 +17,9 @@ Electron hosts the React UI in a `BrowserWindow`. UI under `src/pages` and
 | `npm run dev` | Vite in the browser (UI only) |
 | `npm run electron:dev` | Vite + Electron shell |
 | `npm run electron:build` | Production renderer + Electron main/preload |
+
+## Security notes (Stufe 1)
+
+- External `window.open` is denied; main does not call `shell.openExternal` by default.
+- Navigation allowlist pins the Vite origin or the exact packed `index.html` (no loose `startsWith`).
+- Set `SLID_DIAGNOSTIC=1` only when you need `userDataPath` / lab DB path in the renderer IPC.

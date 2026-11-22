@@ -54,6 +54,16 @@ export function EinstellungenPage() {
             <dt>DB-Status</dt>
             <dd>{db?.state ?? "…"}</dd>
           </div>
+          <div>
+            <dt>Diagnostik-Modus</dt>
+            <dd>
+              {shell
+                ? shell.diagnosticMode
+                  ? "an (SLID_DIAGNOSTIC)"
+                  : "aus — keine lokalen Pfade im Renderer"
+                : "…"}
+            </dd>
+          </div>
           <div className="einstellungen__tech-span">
             <dt>Hinweis</dt>
             <dd>{db?.message ?? "…"}</dd>

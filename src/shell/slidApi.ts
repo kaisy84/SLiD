@@ -10,6 +10,7 @@ const browserShellInfo = (): ShellInfo => ({
   runtime: "browser",
   platform: "web",
   appVersion: "0.1.0-browser",
+  diagnosticMode: false,
   userDataPath: null,
 });
 
