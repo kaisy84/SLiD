@@ -3,24 +3,40 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "main": "dist-electron/main.cjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron:compile": "node scripts/build-electron.mjs",
+    "electron:dev": "npm run electron:compile && concurrently -k \"cross-env ELECTRON=1 vite\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "electron:build": "npm run build && npm run electron:compile",
+    "electron:start": "npm run electron:build && electron .",
+    "smoke:sqlcipher": "node scripts/smoke-sqlcipher.mjs",
+    "postinstall": "electron-rebuild -f -w better-sqlite3-multiple-ciphers || true"
   },
   "dependencies": {
+    "better-sqlite3-multiple-ciphers": "^13.2.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.18.6"
   },
   "devDependencies": {
+    "@electron/rebuild": "^4.2.1",
+    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.7",
+    "cross-env": "^10.1.0",
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.28.2",
     "oxlint": "^1.90.0",
     "typescript": "~7.0.2",
-    "vite": "^8.3.6"
+    "vite": "^8.3.6",
+    "wait-on": "^9.5.1"
   }
 }
