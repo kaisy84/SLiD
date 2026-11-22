@@ -1,0 +1,60 @@
+.einstellungen {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.einstellungen__tech {
+  max-width: 40rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+}
+
+.einstellungen__tech-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.einstellungen__tech-lead {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+.einstellungen__tech-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+}
+
+.einstellungen__tech-grid > div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.einstellungen__tech-grid dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.einstellungen__tech-grid dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+@media (min-width: 720px) {
+  .einstellungen__tech-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .einstellungen__tech-span {
+    grid-column: 1 / -1;
+  }
+}

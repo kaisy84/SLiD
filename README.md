@@ -1,25 +1,38 @@
 # SLiD
 
-**Schriftsprachliche Lern- und Individualdiagnostik** — visueller UI-Prototyp (Design & Navigation).
+**Schriftsprachliche Lern- und Individualdiagnostik** — visueller UI-Prototyp mit Electron-Hülle (Stufe 1).
 
-Desktop-Web-UI mit React + TypeScript (Vite). Keine diagnostische Logik, keine Datenbank. Architektur modular, damit später ein Electron-Shell ergänzt werden kann.
+React + TypeScript (Vite) UI; Electron Main/Preload mit typisiertem IPC; SQLCipher-Vorbereitung für lokale Verschlüsselung. Keine diagnostische Logik, keine Cloud, keine Telemetrie.
 
 ## Lokal starten
+
+### Browser (UI only)
 
 ```bash
 npm install
 npm run dev
 ```
 
-Dann im Browser die angezeigte URL öffnen (typisch `http://localhost:5173`).
+Dann `http://127.0.0.1:5173` öffnen.
+
+### Electron-Shell
+
+```bash
+npm install
+npm run electron:dev
+```
+
+Kinder-/Fachdaten bleiben fiktive Demo-Daten in der UI. Die lokale DB öffnet **kein** unverschlüsseltes Produktiv-Store — Key-Management ist **OPEN** (siehe Docs). Optional: `SLID_LAB_DB_KEY=…` für eine verschlüsselte Lab-Probe unter `userData/lab/`.
 
 ## Scripts
 
 | Befehl | Beschreibung |
 |--------|--------------|
-| `npm run dev` | Entwicklungsserver |
-| `npm run build` | Typecheck + Produktionsbuild |
-| `npm run preview` | Build lokal Vorschau |
+| `npm run dev` | Vite-Entwicklungsserver (Browser) |
+| `npm run electron:dev` | Vite + Electron |
+| `npm run build` | Typecheck + Renderer-Produktionsbuild |
+| `npm run electron:build` | Renderer + Electron Main/Preload |
+| `npm run smoke:sqlcipher` | Kurztest Verschlüsselung (Temp-Datei) |
 | `npm run lint` | Oxlint |
 
 ## Hinweis
