@@ -66,6 +66,37 @@
   color: var(--slid-text-secondary);
 }
 
+.module-card__subs {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.75rem;
+  background: #f7f9f6;
+  border-radius: var(--slid-radius-sm);
+}
+
+.module-card__subs li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.module-card__sub-code {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--slid-forest);
+}
+
+.module-card__sub-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.module-card__sub-desc {
+  font-size: 0.8rem;
+  color: var(--slid-text-secondary);
+}
+
 .module-card__state {
   margin-top: 0.95rem;
   font-size: 0.75rem;

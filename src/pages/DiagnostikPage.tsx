@@ -33,7 +33,7 @@ export function DiagnostikPage() {
       <section className="diagnostics__block" aria-labelledby="slid-s-title">
         <div className="diagnostics__block-head">
           <h2 id="slid-s-title">SLiD-S – Schreibdiagnostik</h2>
-          <p>Module S1–S5</p>
+          <p>Module S1–S5 (inkl. S5.1 / S5.2)</p>
         </div>
         <div className="module-grid">
           {slidSModules.map((module) => (
@@ -41,6 +41,17 @@ export function DiagnostikPage() {
               <p className="module-card__code">{module.code}</p>
               <h3 className="module-card__title">{module.title}</h3>
               <p className="module-card__desc">{module.description}</p>
+              {module.subModules && module.subModules.length > 0 ? (
+                <ul className="module-card__subs">
+                  {module.subModules.map((sub) => (
+                    <li key={sub.code}>
+                      <span className="module-card__sub-code">{sub.code}</span>
+                      <span className="module-card__sub-title">{sub.title}</span>
+                      <span className="module-card__sub-desc">{sub.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
               <span className="module-card__state">Nur Anzeige</span>
             </article>
           ))}

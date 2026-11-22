@@ -1,12 +1,22 @@
 export type DiagnosticStatus = "laufend" | "abgeschlossen" | "geplant";
 
+/** Fachärztlich bestätigte Diagnose (nicht Verdacht). */
+export interface ConfirmedDiagnosis {
+  label: string;
+  diagnosedOn: string;
+  practice: string;
+}
+
 export interface ChildProfile {
   id: string;
   displayName: string;
   birthDate: string;
   grade: string;
   school: string;
-  diagnosis: string;
+  /** Nur bestätigte medizinische Diagnosen; leer = keine dokumentiert. */
+  confirmedDiagnoses: ConfirmedDiagnosis[];
+  /** Verdacht / Beobachtungen — getrennt von dokumentierten Diagnosen. */
+  suspicionOrObservation: string;
   status: DiagnosticStatus;
   lastEdited: string;
 }
@@ -31,10 +41,17 @@ export interface DiagnosticOverviewRow {
   date: string;
 }
 
+export interface DiagnosticSubModule {
+  code: string;
+  title: string;
+  description: string;
+}
+
 export interface DiagnosticModule {
   code: string;
   title: string;
   description: string;
+  subModules?: DiagnosticSubModule[];
 }
 
 export const children: ChildProfile[] = [
@@ -44,7 +61,9 @@ export const children: ChildProfile[] = [
     birthDate: "12.03.2016",
     grade: "4. Klasse",
     school: "Grundschule Am Park",
-    diagnosis: "Lese-Rechtschreib-Schwierigkeiten (Verdacht)",
+    confirmedDiagnoses: [],
+    suspicionOrObservation:
+      "Auffälligkeiten beim Lesen und Schreiben; LRS-Verdacht durch Schule gemeldet, noch keine fachärztliche Abklärung.",
     status: "laufend",
     lastEdited: "14.10.2025",
   },
@@ -54,7 +73,14 @@ export const children: ChildProfile[] = [
     birthDate: "28.08.2013",
     grade: "6. Klasse",
     school: "Realschule Nord",
-    diagnosis: "Lese-Rechtschreib-Störung (dokumentiert)",
+    confirmedDiagnoses: [
+      {
+        label: "Lese- und Rechtschreibstörung (ICD-10 F81.0)",
+        diagnosedOn: "15.02.2024",
+        practice: "Praxis Dr. Weber, Kinder- und Jugendpsychiatrie, Hamburg",
+      },
+    ],
+    suspicionOrObservation: "Keine offenen Verdachtsmomente dokumentiert.",
     status: "abgeschlossen",
     lastEdited: "12.09.2025",
   },
@@ -64,7 +90,9 @@ export const children: ChildProfile[] = [
     birthDate: "05.11.2017",
     grade: "3. Klasse",
     school: "Grundschule Weststadt",
-    diagnosis: "Noch keine fachärztliche Diagnose",
+    confirmedDiagnoses: [],
+    suspicionOrObservation:
+      "Lehrkraft beobachtet verlangsamtes Lesetempo; Screening geplant.",
     status: "geplant",
     lastEdited: "01.11.2025",
   },
@@ -132,27 +160,28 @@ export const slidLModules: DiagnosticModule[] = [
   {
     code: "L1",
     title: "Grundlagen des Lesens",
-    description: "Phonologische und graphematische Basiskompetenzen.",
+    description: "Graphem-Phonem-Zuordnung und phonologische Basiskompetenzen.",
   },
   {
     code: "L2",
     title: "Lesegenauigkeit",
-    description: "Genaues Erfassen von Wörtern und Textstellen.",
+    description: "Lautes Lesen einzelner Wörter.",
   },
   {
     code: "L3",
     title: "Leseflüssigkeit",
-    description: "Tempo und Automatisierung beim lauten und stillen Lesen.",
+    description: "Lautes Textlesen innerhalb von 60 Sekunden.",
   },
   {
     code: "L4",
     title: "Leseverständnis",
-    description: "Sinnentnahme auf Satz- und Textebene.",
+    description: "Wort-, Satz- und Textverständnis.",
   },
   {
     code: "L5",
-    title: "Weitere diagnostische Leseverfahren",
-    description: "Ergänzende Verfahren und vertiefende Einschätzungen.",
+    title: "Satz-Bild-Zuordnung",
+    description:
+      "Zeitbegrenztes Verfahren mit zwei Minuten Bearbeitungszeit.",
   },
 ];
 
@@ -160,27 +189,39 @@ export const slidSModules: DiagnosticModule[] = [
   {
     code: "S1",
     title: "Schriftsprachliche Grundlagen",
-    description: "Grapheme, Laut-Buchstaben-Zuordnung und Basisschreiben.",
+    description: "Basiskompetenzen der schriftsprachlichen Entwicklung.",
   },
   {
     code: "S2",
     title: "Rechtschreibleistung",
-    description: "Orthografische Strategien und Fehlerschwerpunkte.",
+    description: "Wortdiktat.",
   },
   {
     code: "S3",
-    title: "Diktat",
-    description: "Schreiben nach Gehör in kontrollierten Aufgaben.",
+    title: "Satzdiktat",
+    description: "Schreiben von Sätzen nach Gehör.",
   },
   {
     code: "S4",
-    title: "Freies Schreiben",
-    description: "Textproduktion, Aufbau und sprachliche Mittel.",
+    title: "Schriftlicher Ausdruck",
+    description: "Freie Textproduktion und Ausdrucksfähigkeit.",
   },
   {
     code: "S5",
     title: "Schreibflüssigkeit und Grafomotorik",
-    description: "Schreibtempo, Motorik und Ausführung.",
+    description: "Schreibtempo und grafomotorische Ausführung.",
+    subModules: [
+      {
+        code: "S5.1",
+        title: "Schreibflüssigkeit",
+        description: "Tempo und Automatisierung beim Schreiben.",
+      },
+      {
+        code: "S5.2",
+        title: "Grafomotorik",
+        description: "Motorische Ausführung und Schriftgestaltung.",
+      },
+    ],
   },
 ];
 

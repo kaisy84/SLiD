@@ -82,6 +82,25 @@
   font-size: 0.98rem;
 }
 
+.detail-empty {
+  color: var(--slid-text-muted);
+}
+
+.diagnosis-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.diagnosis-list__label {
+  font-weight: 600;
+}
+
+.diagnosis-list__meta {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--slid-text-secondary);
+}
+
 .test-list {
   display: grid;
   gap: 0.7rem;

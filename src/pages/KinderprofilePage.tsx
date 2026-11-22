@@ -86,8 +86,32 @@ export function KinderprofilePage() {
                 <dd>{selected.school}</dd>
               </div>
               <div>
-                <dt>Dokumentierte Diagnose</dt>
-                <dd>{selected.diagnosis}</dd>
+                <dt>Dokumentierte Diagnose(n)</dt>
+                <dd>
+                  {selected.confirmedDiagnoses.length === 0 ? (
+                    <span className="detail-empty">
+                      Keine fachärztlich bestätigte Diagnose dokumentiert
+                    </span>
+                  ) : (
+                    <ul className="diagnosis-list">
+                      {selected.confirmedDiagnoses.map((diagnosis) => (
+                        <li key={`${diagnosis.label}-${diagnosis.diagnosedOn}`}>
+                          <p className="diagnosis-list__label">{diagnosis.label}</p>
+                          <p className="diagnosis-list__meta">
+                            Diagnosedatum: {diagnosis.diagnosedOn}
+                          </p>
+                          <p className="diagnosis-list__meta">
+                            Ärztliche Praxis: {diagnosis.practice}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </dd>
+              </div>
+              <div>
+                <dt>Verdacht / Beobachtungen</dt>
+                <dd>{selected.suspicionOrObservation}</dd>
               </div>
             </dl>
           </article>
